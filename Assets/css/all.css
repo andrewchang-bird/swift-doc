@@ -30,7 +30,7 @@
   --system-background: rgb(255, 255, 255);
   --secondary-system-background: rgb(242, 242, 247);
   --tertiary-system-background: rgb(255, 255, 255);
-  --system-grouped-background: rgb(242, 242, 247);
+  /*--system-grouped-background: rgb(242, 242, 247); (breaks scrollbar fill)*/
   --secondary-system-grouped-background: rgb(255, 255, 255);
   --tertiary-system-grouped-background: rgb(242, 242, 247);
 }
@@ -68,7 +68,7 @@
     --system-background: color(display-p3 1 1 1);
     --secondary-system-background: color(display-p3 0.949 0.949 0.9686);
     --tertiary-system-background: color(display-p3 1 1 1);
-    --system-grouped-background: color(display-p3 0.949 0.949 0.9686);
+    /*--system-grouped-background: color(display-p3 0.949 0.949 0.9686); (breaks scrollbar fill)*/
     --secondary-system-grouped-background: color(display-p3 1 1 1);
     --tertiary-system-grouped-background: color(display-p3 0.949 0.949 0.9686);
   }
@@ -310,7 +310,7 @@ a {
   }
 
   & + a {
-    display: inline-block;
+    /*display: inline-block; (breaks code block links)*/
   }
 }
 
@@ -329,9 +329,9 @@ article > .discussion {
 }
 
 .discussion .highlight {
-  background: transparent;
-  border: 1px var(--separator) solid;
-  font: var(--caption-1);
+  /*background: transparent; (styling)*/
+  /*border: 1px var(--separator) solid; (styling)*/
+  /*font: var(--caption-1); (styling)*/
   padding: 1em;
   text-indent: 0;
 }
@@ -561,10 +561,21 @@ h3 {
   font: var(--title-3);
 }
 
+[role="article"] > h3 {
+  font: var(--headline);
+}
+
 h4,
 h5,
 h6 {
   font: var(--headline);
+}
+
+.summary + h4,
+.summary + h5,
+.summary + h6 {
+  margin-top: 2em;
+  margin-bottom: 0;
 }
 
 /* strong,
@@ -646,7 +657,11 @@ caption {
 }
 
 code,
-.graph text {
+.graph text,
+section > [role="article"][class],
+nav li[class],
+dl dt[class],
+[role="article"] > h3 {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   font-weight: 300;
@@ -744,7 +759,7 @@ nav {
 main {
   background: var(--system-background);
   border-radius: 8px;
-  padding: 0 2em;
+  padding: 0;
 
   & section {
     border-bottom: 1px var(--separator) solid;
@@ -862,7 +877,9 @@ article {
 }
 
 dl {
-  padding-top: 1em;
+  /*padding-top: 1em; (fix spacing)*/
+  display: inline-block;
+  margin-top: 0;
 }
 
 dt {
@@ -969,8 +986,12 @@ dl dt[class] {
   background-image: var(--background-image);
   background-size: 1em;
   background-repeat: no-repeat;
-  background-position: left 0.25em;
+  background-position: left 0.125em;
   padding-left: 3em;
+}
+
+nav li[class] {
+  background-position: left 0.25em;
 }
 
 dl dt[class] {
