@@ -5,10 +5,12 @@ import struct SwiftSemantics.Protocol
 public final class Module {
     public let name: String
     public let sourceFiles: [SourceFile]
+    public let version: String?
     public let interface: Interface
 
-    public required init(name: String = "Anonymous", sourceFiles: [SourceFile]) {
+    public required init(name: String = "Anonymous", version: String? = nil, sourceFiles: [SourceFile]) {
         self.name = name
+        self.version = version
         self.sourceFiles = sourceFiles
 
         let imports = sourceFiles.flatMap { $0.imports }
@@ -16,7 +18,7 @@ public final class Module {
         self.interface = Interface(imports: imports, symbols: symbols)
     }
 
-    public convenience init(name: String = "Anonymous", paths: [String]) throws {
+    public convenience init(name: String = "Anonymous", version: String? = nil, paths: [String]) throws {
         var sources: [(file: URL, directory: URL)] = []
 
         let fileManager = FileManager.default
@@ -36,6 +38,6 @@ public final class Module {
 
         let sourceFiles = try sources.parallelMap { try SourceFile(file: $0.file, relativeTo: $0.directory) }
 
-        self.init(name: name, sourceFiles: sourceFiles)
+        self.init(name: name, version: version, sourceFiles: sourceFiles)
     }
 }
