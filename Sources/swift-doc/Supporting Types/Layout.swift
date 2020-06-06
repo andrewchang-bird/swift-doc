@@ -21,7 +21,7 @@ func layout(_ page: Page) -> HTML {
                 </strong>
                 <span>Documentation</span>
             </a>
-            <sup>Beta</sup>
+            <sup>\#(page.module.version ?? "Beta")</sup>
         </header>
 
         <!--
