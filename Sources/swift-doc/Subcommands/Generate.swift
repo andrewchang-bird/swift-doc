@@ -23,6 +23,11 @@ extension SwiftDoc {
       @Option(name: [.long, .customShort("n")],
               help: "The name of the module")
       var moduleName: String
+      
+      @Option(name: [.long, .customShort("v")],
+              default: nil,
+              help: "The name of the module")
+      var version: String?
 
       @Option(name: .shortAndLong,
               help: "The path for generated output")
@@ -56,7 +61,7 @@ extension SwiftDoc {
         }
       }
 
-      let module = try Module(name: options.moduleName, paths: options.inputs)
+      let module = try Module(name: options.moduleName, version: options.version, paths: options.inputs)
       let baseURL = options.baseURL
 
       let outputDirectoryURL = URL(fileURLWithPath: options.output)
