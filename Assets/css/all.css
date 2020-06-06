@@ -887,7 +887,6 @@ dd {
   padding: 1em;
   padding-left: 3em;
   text-indent: -2em;
-  white-space: pre-line;
 
   & .p {
     white-space: nowrap;
