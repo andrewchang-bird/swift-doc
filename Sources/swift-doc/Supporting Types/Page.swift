@@ -36,7 +36,11 @@ extension Page {
 }
 
 func route(for symbol: Symbol) -> String {
-    return route(for: symbol.id)
+    let description = route(for: symbol.id)
+    guard let shortHash = symbol.declaration.hashed()?.lowercased().prefix(7) else {
+        return description
+    }
+    return description + "-" + shortHash
 }
 
 func route(for name: CustomStringConvertible) -> String {

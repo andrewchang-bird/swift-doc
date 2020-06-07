@@ -53,7 +53,7 @@ extension SwiftDoc {
 
         var pages: [String: Page] = [:]
 
-        var globals: [String: [Symbol]] = [:]
+        var globals = [Symbol]()
         for symbol in module.interface.topLevelSymbols.filter({ $0.isPublic }) {
           switch symbol.api {
           case is Class, is Enumeration, is Structure, is Protocol:
@@ -61,16 +61,16 @@ extension SwiftDoc {
           case let `typealias` as Typealias:
             pages[route(for: `typealias`.name)] = TypealiasPage(module: module, symbol: symbol, baseURL: baseURL)
           case let function as Function where !function.isOperator:
-            globals[function.name, default: []] += [symbol]
-          case let variable as Variable:
-            globals[variable.name, default: []] += [symbol]
+            globals.append(symbol)
+          case is Variable:
+            globals.append(symbol)
           default:
             continue
           }
         }
 
-        for (name, symbols) in globals {
-            pages[route(for: name)] = GlobalPage(module: module, name: name, symbols: symbols, baseURL: baseURL)
+        for symbol in globals {
+            pages[route(for: symbol)] = GlobalPage(module: module, name: symbol.name, symbols: [symbol], baseURL: baseURL)
         }
 
         guard !pages.isEmpty else {
