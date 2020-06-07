@@ -72,7 +72,7 @@ extension SwiftDoc {
 
         var pages: [String: Page] = [:]
 
-        var globals: [String: [Symbol]] = [:]
+        var globals = [Symbol]()
         let symbolFilter = options.minimumAccessLevel.includes(symbol:)
         for symbol in module.interface.topLevelSymbols.filter(symbolFilter) {
           switch symbol.api {
@@ -86,9 +86,9 @@ extension SwiftDoc {
               pages[route(for: symbol)] = operatorPage
             }
           case let function as Function where !function.isOperator:
-            globals[function.name, default: []] += [symbol]
-          case let variable as Variable:
-            globals[variable.name, default: []] += [symbol]
+            globals.append(symbol)
+          case is Variable:
+            globals.append(symbol)
           default:
             continue
           }
@@ -105,8 +105,8 @@ extension SwiftDoc {
           pages[route(for: typeName)] = ExternalTypePage(module: module, externalType: typeName, symbols: symbols, baseURL: baseURL, includingOtherSymbols: symbolFilter)
         }
 
-        for (name, symbols) in globals {
-            pages[route(for: name)] = GlobalPage(module: module, name: name, symbols: symbols, baseURL: baseURL, includingOtherSymbols: symbolFilter)
+        for symbol in globals {
+            pages[route(for: symbol)] = GlobalPage(module: module, name: symbol.name, symbols: [symbol], baseURL: baseURL, includingOtherSymbols: symbolFilter)
         }
 
         guard !pages.isEmpty else {

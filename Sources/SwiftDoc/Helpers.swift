@@ -25,7 +25,10 @@ public func path(for identifier: CustomStringConvertible, with baseURL: String) 
 
 private let reservedCharacters: CharacterSet = [
     // Windows Reserved Characters
-    "<", ">", ":", "\"", "/", "\\", "|", "?", "*",
+    /* "<", ">", ":", "\"", "/", "\\", "|", "?", "*", (We only generate on macOS) */
+    
+    // HTTP path reserved characters
+    "/", "\\", "?",
 ]
 
 public func path(for identifier: String) -> String {
