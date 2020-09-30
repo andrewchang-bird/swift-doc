@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/SwiftDocOrg/CommonMark.git",
         "state": {
           "branch": null,
-          "revision": "902cc82abc2e8ad23b73c982eed27c63ae3d9384",
-          "version": null
+          "revision": "62176a332884826997928ba578d9d322c16772fb",
+          "version": "0.4.0"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/SwiftDocOrg/GraphViz.git",
         "state": {
           "branch": null,
-          "revision": "03405c13dc1c31f50c08bbec6e7587cbee1c7fb3",
-          "version": null
+          "revision": "c4746cb3ff6f5e7c5d5540c40b98555521c3ee43",
+          "version": "0.1.3"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
         "state": {
           "branch": null,
-          "revision": "9f04d1ff1afbccd02279338a2c91e5f27c45e93a",
-          "version": "0.0.5"
+          "revision": "223d62adc52d51669ae2ee19bdb8b7d9fd6fcd9c",
+          "version": "0.0.6"
         }
       },
       {
@@ -86,8 +86,8 @@
         "package": "SwiftSyntax",
         "repositoryURL": "https://github.com/apple/swift-syntax.git",
         "state": {
-          "branch": "0.50200.0",
-          "revision": "0688b9cfc4c3dd234e4f55f1f056b2affc849873",
+          "branch": "0.50300.0",
+          "revision": "844574d683f53d0737a9c6d706c3ef31ed2955eb",
           "version": null
         }
       },
@@ -95,9 +95,9 @@
         "package": "SwiftMarkup",
         "repositoryURL": "https://github.com/SwiftDocOrg/SwiftMarkup.git",
         "state": {
-          "branch": "0.2.0",
-          "revision": "f395f3bd9e345402cc744aa9051780ed403d3b26",
-          "version": null
+          "branch": null,
+          "revision": "7915d17608dd32434dc8abb95156f70367f38a5a",
+          "version": "0.2.1"
         }
       },
       {
@@ -113,8 +113,8 @@
         "package": "SwiftSyntaxHighlighter",
         "repositoryURL": "https://github.com/NSHipster/SwiftSyntaxHighlighter.git",
         "state": {
-          "branch": "1.0.0",
-          "revision": "4a20d10bba17241b66650d99081801536146b43c",
+          "branch": "1.1.0",
+          "revision": "b23b80be3032916dd5aefe9c621be25f75f3681f",
           "version": null
         }
       }
